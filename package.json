@@ -1,0 +1,32 @@
+{
+  "name": "aws-rest",
+  "version": "0.0.1",
+  "description": "Framework to create REST APIs using AWS resources.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rubs33/aws-rest.git"
+  },
+  "keywords": [
+    "rest",
+    "aws",
+    "framework"
+  ],
+  "author": "Rubens Takiguti Ribeiro",
+  "license": "LGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/rubs33/aws-rest/issues"
+  },
+  "homepage": "https://github.com/rubs33/aws-rest#readme",
+  "dependencies": {
+    "dynamodb": "^1.1.2",
+    "sqs": "^2.0.2"
+  },
+  "devDependencies": {
+    "express": "^4.16.4",
+    "mocha": "^5.2.0"
+  }
+}

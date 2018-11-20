@@ -1,0 +1,32 @@
+version: '3.5'
+
+services:
+  localstack:
+    image: localstack/localstack
+    ports:
+      - 3001:3001
+      - 4568:4568
+      - 4569:4569
+      - 4576:4576
+      - 4581:4581
+    environment:
+      - SERVICES=dynamodb:4569,kinesis:4568,sqs:4576,cloudformation:4581
+      - DATA_DIR=/tmp/localstack/data
+      - PORT_WEB_UI=3001
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=anykey
+      - AWS_SECRET_ACCESS_KEY=anysecretkey
+    volumes:
+      - ./tmp/localstack:/tmp/localstack
+
+  app:
+    image: node:11.2.0-alpine
+    ports:
+      - 3000:3000
+    volumes:
+      - ../../:/app/
+    working_dir: /app
+    entrypoint: ash -c '/app/examples/simple/run.sh'
+    depends_on:
+      - localstack
+
